@@ -4,25 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Matrimonio - Caricamento Foto</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
     <style>
-        body { text-align: center; font-family: Arial, sans-serif; margin-top: 50px; }
-        h1 { color: #3498db; }
-        form { margin: 20px; }
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('Sfondo sito matrimonio.JPEG'); /* Sfondo elegante */
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            color: #ffffff;
+            text-align: center;
+        }
+        h1 {
+            margin-top: 50px;
+            font-size: 3em;
+            font-family: 'Dancing Script', cursive;
+            color: #ffeaa7;
+        }
+        form {
+            margin: 30px auto;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            max-width: 500px;
+        }
+        input[type="file"] {
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            background: #6c5ce7;
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+        }
+        button {
+            background: #00cec9;
+            border: none;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease-in-out;
+        }
+        button:hover {
+            background: #0984e3;
+        }
     </style>
 </head>
 <body>
-    <h1>Carica le tue foto del matrimonio!</h1>
+    <h1>Carica le foto del nostro matrimonio!</h1>
     <form name="foto-matrimonio" method="POST" action="/successo" data-netlify="true" enctype="multipart/form-data">
-        <!-- Campo nascosto per Netlify Forms -->
         <input type="hidden" name="form-name" value="foto-matrimonio">
-        
-        <!-- Campo per il caricamento delle immagini -->
         <input type="file" name="file" accept="image/*" multiple>
-        
-        <!-- Pulsante per inviare il modulo -->
         <button type="submit">Carica</button>
     </form>
-    
-    <p id="status-message"></p>
 </body>
 </html>
