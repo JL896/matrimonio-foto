@@ -32,15 +32,24 @@
             padding: 10px;
             border-radius: 5px;
             margin-bottom: 20px;
-            background: #6c5ce7; /* Colore del bottone di caricamento */
-            color: #ffffff;
-            border: none;
+            background: white; /* Colore bianco per il pannellino */
+            color: black; /* Colore nero per la scritta "Nessun file selezionato" */
+            border: 2px solid gold; /* Bordo dorato per il pannellino */
             cursor: pointer;
         }
-        button {
-            background: #00cec9; /* Colore del pulsante */
+        input[type="file"]::file-selector-button {
+            background: gold; /* Colore oro per il pulsante "Scegli file" */
+            color: white; /* Testo bianco per il pulsante "Scegli file" */
             border: none;
-            color: #fff;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        button {
+            background: gold; /* Colore oro per il pulsante "Carica" */
+            border: none;
+            color: white; /* Testo bianco per il pulsante "Carica" */
             padding: 10px 20px;
             font-size: 18px;
             border-radius: 5px;
@@ -48,7 +57,7 @@
             transition: background 0.3s ease-in-out;
         }
         button:hover {
-            background: #0984e3; /* Colore del pulsante al passaggio del mouse */
+            background: #FFD700; /* Colore oro più chiaro al passaggio del mouse */
         }
     </style>
 </head>
