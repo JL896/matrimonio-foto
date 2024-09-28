@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrimonio - Caricamento Foto</title>
+    <style>
+        body { text-align: center; font-family: Arial, sans-serif; margin-top: 50px; }
+        h1 { color: #3498db; }
+        form { margin: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Carica le tue foto del matrimonio!</h1>
+    <form id="upload-form">
+        <input type="file" id="file-upload" accept="image/*" multiple>
+        <button type="button" onclick="uploadFile()">Carica</button>
+    </form>
+    <p id="status-message"></p>
+
+    <script>
+        async function uploadFile() {
+            const fileInput = document.getElementById('file-upload');
+            const statusMessage = document.getElementById('status-message');
+            const files = fileInput.files;
+
+            if (files.length === 0) {
+                statusMessage.textContent = 'Seleziona almeno un file prima di caricare.';
+                return;
+            }
+
+            const formData = new FormData();
+            for (let file of files) {
+                formData.append('files', file);
+            }
+
+            try {
+                const response = await fetch('YOUR_FIREBASE_ENDPOINT_URL', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (response.ok) {
+                    statusMessage.textContent = 'Foto caricate con successo!';
+                } else {
+                    statusMessage.textContent = 'Errore nel caricamento. Riprova più tardi.';
+                }
+            } catch (error) {
+                statusMessage.textContent = 'Errore di connessione.';
+            }
+        }
+    </script>
+</body>
+</html>
