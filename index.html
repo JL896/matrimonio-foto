@@ -12,43 +12,17 @@
 </head>
 <body>
     <h1>Carica le tue foto del matrimonio!</h1>
-    <form id="upload-form">
-        <input type="file" id="file-upload" accept="image/*" multiple>
-        <button type="button" onclick="uploadFile()">Carica</button>
+    <form name="foto-matrimonio" method="POST" action="/successo" data-netlify="true" enctype="multipart/form-data">
+        <!-- Campo nascosto per Netlify Forms -->
+        <input type="hidden" name="form-name" value="foto-matrimonio">
+        
+        <!-- Campo per il caricamento delle immagini -->
+        <input type="file" name="file" accept="image/*" multiple>
+        
+        <!-- Pulsante per inviare il modulo -->
+        <button type="submit">Carica</button>
     </form>
+    
     <p id="status-message"></p>
-
-    <script>
-        async function uploadFile() {
-            const fileInput = document.getElementById('file-upload');
-            const statusMessage = document.getElementById('status-message');
-            const files = fileInput.files;
-
-            if (files.length === 0) {
-                statusMessage.textContent = 'Seleziona almeno un file prima di caricare.';
-                return;
-            }
-
-            const formData = new FormData();
-            for (let file of files) {
-                formData.append('files', file);
-            }
-
-            try {
-                const response = await fetch('YOUR_FIREBASE_ENDPOINT_URL', {
-                    method: 'POST',
-                    body: formData
-                });
-
-                if (response.ok) {
-                    statusMessage.textContent = 'Foto caricate con successo!';
-                } else {
-                    statusMessage.textContent = 'Errore nel caricamento. Riprova più tardi.';
-                }
-            } catch (error) {
-                statusMessage.textContent = 'Errore di connessione.';
-            }
-        }
-    </script>
 </body>
 </html>
