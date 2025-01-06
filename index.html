@@ -59,14 +59,34 @@
         button:hover {
             background: #FFD700; /* Colore oro più chiaro al passaggio del mouse */
         }
+        #error {
+            color: red;
+            margin-top: 10px;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
     <h1>Carica le foto del nostro matrimonio!</h1>
-    <form name="foto-matrimonio" method="POST" action="/successo" data-netlify="true" enctype="multipart/form-data">
+    <form name="foto-matrimonio" method="POST" action="/successo" data-netlify="true" enctype="multipart/form-data" id="uploadForm">
         <input type="hidden" name="form-name" value="foto-matrimonio">
-        <input type="file" name="file" accept="image/*" multiple>
+        <input type="file" name="file" accept="image/*" id="photos" multiple>
         <button type="submit">Carica</button>
+        <p id="error"></p>
     </form>
+
+    <script>
+        document.getElementById("uploadForm").addEventListener("submit", function (e) {
+            const files = document.getElementById("photos").files;
+            const errorElement = document.getElementById("error");
+
+            if (files.length > 10) {
+                e.preventDefault(); // Blocca l'invio del form
+                errorElement.textContent = "Puoi caricare un massimo di 10 foto.";
+            } else {
+                errorElement.textContent = ""; // Pulisce l'errore se tutto è corretto
+            }
+        });
+    </script>
 </body>
 </html>
